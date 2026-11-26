@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasnim Jahan Nafila | Finance Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f2942;       /* Executive Navy */
+      --accent: #0d9488;        /* Financial Teal */
+      --accent-light: #f0fdfa;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow: 0 10px 25px -5px rgba(15, 41, 66, 0.06), 0 4px 10px -6px rgba(15, 41, 66, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Main Wrapper */
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 2.2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 4.5rem 0 3.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccfbf1;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.85rem;
+      line-height: 1.2;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-role {
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-bio {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1e3a5f;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: var(--surface);
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Profile Photo Card */
+    .profile-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      width: 290px;
+      height: 330px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+      padding: 6px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .profile-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      background: #e2e8f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .profile-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 2px;
+    }
+
+    .placeholder-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      padding: 0 1rem;
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Skills Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* Project Featured Card */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card p {
+      margin: 0.8rem 0 1.5rem;
+      color: var(--text-muted);
+    }
+
+    /* Activity Image Placeholder */
+    .activity-img {
+      width: 100%;
+      height: 165px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+      border: 1px dashed #94a3b8;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      overflow: hidden;
+    }
+
+    .activity-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Contact Box */
+    .contact-box {
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-btn {
+      background: #ffffff;
+      color: var(--primary);
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* Responsive Mobile Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 3rem 0 2rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .profile-wrapper {
+        order: -1;
+      }
+      .profile-card {
+        width: 230px;
+        height: 265px;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">Tasnim<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div>
+        <span class="badge">CGPA 3.90 / 4.00 • Finance Major</span>
+        <h1>Tasnim Jahan Nafila</h1>
+        <p class="hero-role">BBA Finance Student | Southeast University</p>
+        <p class="hero-bio">
+          Hi, I am Tasnim Jahan Nafila — a dedicated BBA Finance student driven by high ambitions and a passion for continuous learning. Enthusiastic about corporate finance, investment appraisal, and financial analysis, I am eager to turn analytical potential into real-world impact.
+        </p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">View Financial Analysis</a>
+          <!-- REPLACE '#' BELOW WITH YOUR GOOGLE DRIVE CV LINK -->
+          <a href="#" target="_blank" class="btn btn-outline">Download CV (PDF)</a>
+        </div>
+      </div>
+
+      <div class="profile-wrapper">
+        <div class="profile-card">
+          <div class="profile-inner">
+            <!-- Upload photo as 'profile.jpg' in the same folder. If missing, initials will show cleanly -->
+            <img src="profile.jpg" alt="Tasnim Jahan Nafila" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none;">
+              <div class="placeholder-initials">TJN</div>
+              <div class="placeholder-note">Add <strong>profile.jpg</strong> to display photo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Education -->
+    <section id="about">
+      <h2 class="section-title">About Me & Education</h2>
+      <p class="section-subtitle">Academic foundation, analytical strengths, and core competencies.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="card-meta">Profile Summary</span>
+          <h3>Driven & Fast-Learning Finance Student</h3>
+          <p>
+            I am pursuing a Bachelor of Business Administration with a major in Finance at Southeast University. As a fast learner with strong analytical potential, my coursework has equipped me with hands-on practice in evaluating investment decisions, valuing cash flows, and understanding foreign exchange markets.
+          </p>
+          <div class="tags">
+            <span class="tag">Financial Analysis</span>
+            <span class="tag">Investment Risk Management</span>
+            <span class="tag">MS Excel & Data Analysis</span>
+            <span class="tag">Google Analytics</span>
+            <span class="tag">Corporate Finance</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card-meta">Academic Background</span>
+          <h3>Bachelor of Business Administration (BBA)</h3>
+          <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.3rem;">
+            Major in Finance — Southeast University, Dhaka
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Ongoing | <strong>Current CGPA: 3.90 / 4.00</strong>
+          </p>
+          <hr style="border: none; border-top: 1px solid var(--border); margin: 1rem 0;">
+          <p style="font-size: 0.9rem;">
+            <strong>Certifications:</strong> Investment Risk Management (Coursera), Excel Essential for Workplace Productivity (UNICEF), Google Ads & Google Analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Financial Analysis & Projects</h2>
+      <p class="section-subtitle">Practical coursework and quantitative valuation models.</p>
+
+      <div class="grid-2">
+        <div class="project-card">
+          <div>
+            <span class="card-meta">Capital Budgeting • Quantitative Model</span>
+            <h3>Investment Appraisal Using NPV and IRR</h3>
+            <p>
+              I calculated the Net Present Value (NPV) and Internal Rate of Return (IRR) of a proposed project to evaluate whether its expected future cash flows justified the initial capital investment under varying discount rate assumptions.
+            </p>
+          </div>
+          <div>
+            <!-- REPLACE '#' BELOW WITH YOUR GOOGLE DRIVE PDF LINK -->
+            <a href="#" target="_blank" class="btn btn-primary">View Analysis (PDF) ↗</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="card-meta">Risk & Portfolio • Coursera Certification</span>
+            <h3>Investment Risk & Cash Flow Evaluation</h3>
+            <p>
+              Applied structured financial modeling and risk assessment frameworks to analyze asset volatility, foreign exchange exposure, and return trade-offs for informed corporate financial decision-making.
+            </p>
+          </div>
+          <div>
+            <!-- REPLACE '#' BELOW WITH YOUR SECOND PROJECT/CERTIFICATE LINK IF NEEDED -->
+            <a href="#" target="_blank" class="btn btn-outline">View Summary ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities & Leadership -->
+    <section id="activities">
+      <h2 class="section-title">Activities & Leadership</h2>
+      <p class="section-subtitle">Conferences, clubs, and campus leadership experiences.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="activity-img">
+            <!-- Optional: Replace with 'activity1.jpg' -->
+            <img src="activity1.jpg" alt="Bangladesh Post-Budget Summit 2026" onerror="this.style.display='none'; this.parentElement.innerHTML='Event Photo (activity1.jpg)';">
+          </div>
+          <span class="card-meta">National Summit • 2026</span>
+          <h3>Bangladesh Post-Budget Summit</h3>
+          <p>
+            Participated as a volunteer and gained insights into national fiscal policy, macroeconomic priorities, and budget impacts on Bangladesh's financial sector.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="activity-img">
+            <!-- Optional: Replace with 'activity2.jpg' -->
+            <img src="activity2.jpg" alt="Southeast Business Innovation Forum" onerror="this.style.display='none'; this.parentElement.innerHTML='Event Photo (activity2.jpg)';">
+          </div>
+          <span class="card-meta">2025 – Present</span>
+          <h3>Southeast Business Innovation Forum</h3>
+          <p>
+            Active member collaborating on business research days, entrepreneurship workshops, and strategic case competitions to sharpen corporate communication.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="activity-img">
+            <!-- Optional: Replace with 'activity3.jpg' -->
+            <img src="activity3.jpg" alt="Southeast Debate Club" onerror="this.style.display='none'; this.parentElement.innerHTML='Event Photo (activity3.jpg)';">
+          </div>
+          <span class="card-meta">2024 – Present</span>
+          <h3>Southeast Debate Club & Research</h3>
+          <p>
+            Developed structured critical thinking, persuasive public speaking, and team coordination through competitive debating and university research events.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="contact-box">
+        <h2>Let's Connect</h2>
+        <p>
+          Open to internships, entry-level roles in corporate finance, investment analysis, and business research. Feel free to reach out!
+        </p>
+        <div class="contact-links">
+          <a href="mailto:tasnimjahannafila@gmail.com" class="contact-btn">
+            ✉ tasnimjahannafila@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/tasnim-jahan-nafila-975952339" target="_blank" class="contact-btn">
+            in LinkedIn Profile
+          </a>
+          <!-- REPLACE '#' BELOW WITH YOUR GOOGLE DRIVE CV LINK -->
+          <a href="#" target="_blank" class="contact-btn">
+            📄 Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Tasnim Jahan Nafila. Built with precision & ambition.</p>
+  </footer>
+
+</body>
+</html>
